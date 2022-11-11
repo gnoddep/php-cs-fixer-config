@@ -6,7 +6,8 @@ composer require --dev nerdman/php-cs-fixer-config
 
 Add the following in your PHP-CS-Config file
 
-``` lang=php
+```php
+<?php
 use Nerdman\PhpCsFixerConfig\Php81;
 use PhpCsFixer\Finder;
 
