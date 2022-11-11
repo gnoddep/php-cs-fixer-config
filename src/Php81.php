@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Nerdman\CodeStyle\Config;
 
@@ -6,10 +7,12 @@ use PhpCsFixer\Config;
 
 final class Php81 extends Config
 {
-    private const RULES = [
+    private const SETS = [
         '@Symfony',
         '@Symfony:risky',
+    ];
 
+    private const RULES = [
         'align_multiline_comment' => ['comment_type' => 'all_multiline'],
         'array_indentation' => true,
         'assign_null_coalescing_to_coalesce_equal' => true,
@@ -135,7 +138,7 @@ final class Php81 extends Config
 
         $this
             ->setRiskyAllowed(true)
-            ->setRules(self::RULES)
+            ->setRules(\array_fill_keys(self::SETS, true) + self::RULES)
             ->setFinder($finder);
 
         if ($cacheFile !== null) {
