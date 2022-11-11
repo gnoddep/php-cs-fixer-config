@@ -8,7 +8,7 @@ Add the following in your PHP-CS-Config file
 
 ```php
 <?php
-use Nerdman\PhpCsFixerConfig\Php81;
+use Nerdman\CodeStyle\Config\Php81;
 use PhpCsFixer\Finder;
 
 $finder = Finder::create()
