@@ -14,8 +14,11 @@
             "email": "php-cs-fixer-config@nerdman.nl"
         }
     ],
+    "config": {
+        "sort-packages": true
+    },
     "require": {
-        "php": "^8.1",
+        "php": "8.1.*|8.2.*",
         "friendsofphp/php-cs-fixer": "^3.13"
     }
 }

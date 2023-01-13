@@ -136,7 +136,7 @@ abstract class Config extends PhpCsFixerConfig
     public function __construct(iterable $finder, ?string $cacheFile = null)
     {
         if (\PHP_VERSION_ID < $this->getMinimalPhpVersionId()) {
-            throw new \LogicException('This PHP CS Fixer rules configuration only supports PHP 8.1 or higher');
+            throw new \LogicException('This PHP CS Fixer rules configuration only supports PHP ' . self::getMinimalPhpVersionString() . ' or higher');
         }
 
         parent::__construct();
@@ -155,7 +155,7 @@ abstract class Config extends PhpCsFixerConfig
         }
     }
 
-    abstract protected function getMinimalPhpVersionId(): int;
+    abstract public static function getMinimalPhpVersionId(): int;
 
     /**
      * @return array<string>
@@ -171,5 +171,13 @@ abstract class Config extends PhpCsFixerConfig
     protected function getAdditionalRules(): array
     {
         return [];
+    }
+
+    private static function getMinimalPhpVersionString(): string
+    {
+        $majorVersion = \intdiv(static::getMinimalPhpVersionId(), 10000);
+        $minorVersion = \intdiv(static::getMinimalPhpVersionId() - ($majorVersion * 10000), 100);
+
+        return $majorVersion . '.' . $minorVersion;
     }
 }

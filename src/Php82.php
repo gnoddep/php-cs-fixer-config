@@ -7,7 +7,7 @@ use Nerdman\CodeStyle\Config\Base\Config;
 
 final class Php82 extends Config
 {
-    protected function getMinimalPhpVersionId(): int
+    public static function getMinimalPhpVersionId(): int
     {
         return 80200;
     }

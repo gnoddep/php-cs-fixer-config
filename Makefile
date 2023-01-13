@@ -5,11 +5,11 @@ test: php-cs-fixer
 
 .PHONY: php-cs-fixer
 php-cs-fixer:
-	./vendor/bin/php-cs-fixer fix --diff -v --dry-run
+	PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --diff -v --dry-run
 
 .PHONY: fix
 fix:
-	./vendor/bin/php-cs-fixer fix --diff -v
+	PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix --diff -v
 
 .PHONY: clean
 clean:
