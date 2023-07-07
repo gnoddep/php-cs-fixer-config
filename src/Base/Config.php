@@ -8,7 +8,7 @@ use PhpCsFixer\Config as PhpCsFixerConfig;
 abstract class Config extends PhpCsFixerConfig
 {
     private const SETS = [
-        '@PER',
+        '@PER-CS1.0',
         '@Symfony',
         '@Symfony:risky',
     ];
@@ -17,6 +17,7 @@ abstract class Config extends PhpCsFixerConfig
         'align_multiline_comment' => ['comment_type' => 'all_multiline'],
         'array_indentation' => true,
         'assign_null_coalescing_to_coalesce_equal' => true,
+        'blank_lines_before_namespace' => true,
         'blank_line_after_opening_tag' => false,
         'blank_line_before_statement' => false,
         'cast_spaces' => ['space' => 'none'],
@@ -112,7 +113,6 @@ abstract class Config extends PhpCsFixerConfig
         'self_static_accessor' => true,
         'simplified_if_return' => true,
         'simplified_null_return' => true,
-        'single_blank_line_before_namespace' => true,
         'statement_indentation' => true,
         'static_lambda' => true,
         'ternary_to_null_coalescing' => true,
