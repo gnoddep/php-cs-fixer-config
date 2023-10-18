@@ -36,7 +36,7 @@ abstract class Config extends PhpCsFixerConfig
         'concat_space' => ['spacing' => 'one'],
         'control_structure_braces' => true,
         'control_structure_continuation_position' => ['position' => 'same_line'],
-        'curly_braces_position' => [
+        'braces_position' => [
             'allow_single_line_anonymous_functions' => true,
             'allow_single_line_empty_anonymous_classes' => true,
             'anonymous_classes_opening_brace' => 'same_line',
