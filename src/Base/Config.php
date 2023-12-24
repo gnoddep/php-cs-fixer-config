@@ -8,7 +8,7 @@ use PhpCsFixer\Config as PhpCsFixerConfig;
 abstract class Config extends PhpCsFixerConfig
 {
     private const SETS = [
-        '@PER-CS1.0',
+        '@PER-CS',
         '@Symfony',
         '@Symfony:risky',
     ];
