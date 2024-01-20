@@ -111,6 +111,7 @@ abstract class Config extends PhpCsFixerConfig
         'regular_callable_call' => true,
         'return_assignment' => true,
         'self_static_accessor' => true,
+        'single_line_throw' => false,
         'simplified_if_return' => true,
         'simplified_null_return' => true,
         'statement_indentation' => true,
