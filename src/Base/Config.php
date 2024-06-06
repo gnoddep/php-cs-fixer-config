@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Nerdman\CodeStyle\Config\Base;
 
 use PhpCsFixer\Config as PhpCsFixerConfig;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 abstract class Config extends PhpCsFixerConfig
 {
@@ -49,7 +50,6 @@ abstract class Config extends PhpCsFixerConfig
         'date_time_immutable' => true,
         'declare_parentheses' => true,
         'declare_strict_types' => true,
-        'escape_implicit_backslashes' => ['double_quoted' => true, 'heredoc_syntax' => true, 'single_quoted' => false],
         'get_class_to_class_keyword' => true,
         'explicit_indirect_variable' => true,
         'explicit_string_variable' => true,
@@ -71,6 +71,7 @@ abstract class Config extends PhpCsFixerConfig
         'operator_linebreak' => ['only_booleans' => false, 'position' => 'beginning'],
         'ordered_imports' => ['imports_order' => ['class', 'function', 'const'], 'sort_algorithm' => 'alpha'],
         'ordered_interfaces' => true,
+        'php_unit_attributes' => true,
         'php_unit_test_annotation' => ['style' => 'prefix'],
         'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
         'phpdoc_align' => [
@@ -78,6 +79,8 @@ abstract class Config extends PhpCsFixerConfig
             'tags' => ['method', 'param', 'property', 'return', 'throws', 'type', 'var'],
         ],
         'phpdoc_add_missing_param_annotation' => true,
+        'phpdoc_array_type' => true,
+        'phpdoc_list_type' => true,
         'phpdoc_line_span' => [
             'const' => 'single',
             'method' => 'multi',
@@ -116,6 +119,11 @@ abstract class Config extends PhpCsFixerConfig
         'simplified_null_return' => true,
         'statement_indentation' => true,
         'static_lambda' => true,
+        'string_implicit_backslashes' => [
+            'double_quoted' => 'escape',
+            'heredoc' => 'escape',
+            'single_quoted' => 'unescape',
+        ],
         'ternary_to_null_coalescing' => true,
         'trailing_comma_in_multiline' => [
             'after_heredoc' => true,
@@ -143,6 +151,7 @@ abstract class Config extends PhpCsFixerConfig
         parent::__construct();
 
         $this
+            ->setParallelConfig(ParallelConfigFactory::detect())
             ->setRiskyAllowed(true)
             ->setRules(
                 \array_fill_keys(\array_merge(self::SETS, $this->getAdditionalRules()), true)
@@ -159,7 +168,7 @@ abstract class Config extends PhpCsFixerConfig
     abstract public static function getMinimalPhpVersionId(): int;
 
     /**
-     * @return array<string>
+     * @return list<string>
      */
     protected function getAdditionalSets(): array
     {
