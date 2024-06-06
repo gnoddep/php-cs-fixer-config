@@ -141,9 +141,15 @@ abstract class Config extends PhpCsFixerConfig
 
     /**
      * @param iterable<\SplFileInfo> $finder
+     * @param list<string> $additionalSets
+     * @param array<string, mixed> $additionalRules
      */
-    public function __construct(iterable $finder, ?string $cacheFile = null)
-    {
+    public function __construct(
+        iterable $finder,
+        ?string $cacheFile = null,
+        array $additionalSets = [],
+        array $additionalRules = [],
+    ) {
         if (\PHP_VERSION_ID < $this->getMinimalPhpVersionId()) {
             throw new \LogicException('This PHP CS Fixer rules configuration only supports PHP ' . self::getMinimalPhpVersionString() . ' or higher');
         }
@@ -154,7 +160,8 @@ abstract class Config extends PhpCsFixerConfig
             ->setParallelConfig(ParallelConfigFactory::detect())
             ->setRiskyAllowed(true)
             ->setRules(
-                \array_fill_keys(\array_merge(self::SETS, $this->getAdditionalRules()), true)
+                \array_fill_keys(\array_merge(self::SETS, $this->getAdditionalSets(), $additionalSets), true)
+                + $additionalRules
                 + $this->getAdditionalRules()
                 + self::RULES,
             )
