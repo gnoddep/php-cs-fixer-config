@@ -14,6 +14,6 @@ final class Php84 extends Config
 
     protected function getAdditionalSets(): array
     {
-        return ['@PHP84Migration'];
+        return ['@PHP8x4Migration'];
     }
 }

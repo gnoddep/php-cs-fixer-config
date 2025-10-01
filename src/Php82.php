@@ -14,6 +14,6 @@ final class Php82 extends Config
 
     protected function getAdditionalSets(): array
     {
-        return ['@PHP82Migration'];
+        return ['@PHP8x2Migration'];
     }
 }

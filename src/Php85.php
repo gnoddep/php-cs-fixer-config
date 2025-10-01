@@ -5,15 +5,15 @@ namespace Nerdman\CodeStyle\Config;
 
 use Nerdman\CodeStyle\Config\Base\Config;
 
-final class Php81 extends Config
+final class Php84 extends Config
 {
     public static function getMinimalPhpVersionId(): int
     {
-        return 80100;
+        return 80500;
     }
 
     protected function getAdditionalSets(): array
     {
-        return ['@PHP8x1Migration'];
+        return ['@PHP8x5Migration'];
     }
 }

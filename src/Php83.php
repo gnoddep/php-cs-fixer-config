@@ -14,6 +14,6 @@ final class Php83 extends Config
 
     protected function getAdditionalSets(): array
     {
-        return ['@PHP83Migration'];
+        return ['@PHP8x3Migration'];
     }
 }
