@@ -5,7 +5,7 @@ namespace Nerdman\CodeStyle\Config;
 
 use Nerdman\CodeStyle\Config\Base\Config;
 
-final class Php84 extends Config
+final class Php85 extends Config
 {
     public static function getMinimalPhpVersionId(): int
     {
